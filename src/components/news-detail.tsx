@@ -2,24 +2,34 @@
 
 import useSWR from "swr";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { fetcher } from "@/lib/fetcher";
 import type { NewsItem } from "@/lib/types";
 import { formatDate, getBySlug } from "@/lib/news-utils";
 
 export function NewsDetail({ slug }: { slug: string }) {
-  const { data, error, isLoading } = useSWR<NewsItem[]>(
-    "/data/news.json",
-    fetcher
-  );
-
-  if (isLoading) return <p className="text-muted-foreground">Loading…</p>;
-  if (error) return <p className="text-destructive">Failed to load.</p>;
+  const router = useRouter();
+  const { data } = useSWR<NewsItem[]>("/data/news.json", fetcher);
 
   const item = getBySlug(data || [], slug);
   if (!item) return <p className="text-muted-foreground">Article not found.</p>;
 
   return (
-    <article className="space-y-4">
+    <article className="space-y-6">
+      <div className="flex items-center gap-4">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => router.back()}
+          className="flex items-center gap-2 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:text-orange-400"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back
+        </Button>
+      </div>
+
       <header className="space-y-2">
         <h1 className="text-pretty text-3xl font-semibold">
           {item.News_Title}
