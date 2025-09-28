@@ -1,0 +1,68 @@
+[
+  {
+    "Active_Flag": true,
+    "Categrory_Name": "World",
+    "Image": "/placeholder.svg?height=720&width=1280",
+    "Insert_Date": "2025-09-28T08:30:00.000Z",
+    "News_Content": "Leaders gathered today to discuss global cooperation on climate action and sustainable development goals.",
+    "News_Source": "Global Times",
+    "News_Title": "Global Summit Highlights Climate Cooperation",
+    "News_Id": "wld-001",
+    "Slug": "global-summit-highlights-climate-cooperation"
+  },
+  {
+    "Active_Flag": true,
+    "Categrory_Name": "Business",
+    "Image": "/placeholder.svg?height=720&width=1280",
+    "Insert_Date": "2025-09-27T13:15:00.000Z",
+    "News_Content": "Markets closed higher today as tech and energy stocks led gains amid positive earnings reports.",
+    "News_Source": "MarketWatch Daily",
+    "News_Title": "Markets Close Higher on Tech Gains",
+    "News_Id": "biz-002",
+    "Slug": "markets-close-higher-on-tech-gains"
+  },
+  {
+    "Active_Flag": true,
+    "Categrory_Name": "Technology",
+    "Image": "/placeholder.svg?height=720&width=1280",
+    "Insert_Date": "2025-09-26T09:45:00.000Z",
+    "News_Content": "A new AI model promises safer and more efficient reasoning, reducing hallucinations in production apps.",
+    "News_Source": "TechWire",
+    "News_Title": "Next-Gen AI Model Focuses on Reliability",
+    "News_Id": "tech-003",
+    "Slug": "next-gen-ai-model-focuses-on-reliability"
+  },
+  {
+    "Active_Flag": true,
+    "Categrory_Name": "Sports",
+    "Image": "/placeholder.svg?height=720&width=1280",
+    "Insert_Date": "2025-09-25T19:30:00.000Z",
+    "News_Content": "The underdogs clinched the championship in a thrilling final, stunning fans and analysts alike.",
+    "News_Source": "Sports Central",
+    "News_Title": "Underdogs Clinch Championship in Thriller",
+    "News_Id": "spr-004",
+    "Slug": "underdogs-clinch-championship-in-thriller"
+  },
+  {
+    "Active_Flag": true,
+    "Categrory_Name": "Entertainment",
+    "Image": "/placeholder.svg?height=720&width=1280",
+    "Insert_Date": "2025-09-24T15:00:00.000Z",
+    "News_Content": "The film festival opened to rave reviews, celebrating diverse voices and bold storytelling.",
+    "News_Source": "Entertainment Daily",
+    "News_Title": "Film Festival Opens to Rave Reviews",
+    "News_Id": "ent-005",
+    "Slug": "film-festival-opens-to-rave-reviews"
+  },
+  {
+    "Active_Flag": false,
+    "Categrory_Name": "World",
+    "Image": "/placeholder.svg?height=720&width=1280",
+    "Insert_Date": "2024-03-12T11:00:00.000Z",
+    "News_Content": "Archived story not active.",
+    "News_Source": "Archive",
+    "News_Title": "Inactive Story",
+    "News_Id": "wld-006",
+    "Slug": "inactive-story"
+  }
+]
