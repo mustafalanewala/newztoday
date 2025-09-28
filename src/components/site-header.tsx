@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import useSWR from "swr";
 import { cn } from "@/lib/utils";
 import { fetcher } from "@/lib/fetcher";
@@ -13,19 +14,29 @@ export function SiteHeader() {
   const categories = getCategories(data || []);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="text-lg font-semibold">
-          newztoday
+    <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-white/80 backdrop-blur-md shadow-sm dark:bg-gray-900/80 dark:border-border/20">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <Link
+          href="/"
+          className="flex items-center space-x-2 transition-transform hover:scale-105"
+        >
+          <Image
+            src="/logo.png"
+            alt="NewzToday"
+            width={120}
+            height={40}
+            className="h-8 w-auto"
+          />
           <span className="sr-only">Go to homepage</span>
         </Link>
 
-        <nav className="hidden items-center gap-4 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
           <Link
             href="/"
             className={cn(
-              "rounded-md px-3 py-2 text-sm",
-              "text-foreground hover:bg-muted"
+              "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200",
+              "text-foreground hover:bg-orange-50 hover:text-orange-400",
+              "dark:hover:bg-orange-950/50 dark:hover:text-orange-400"
             )}
           >
             Home
@@ -35,8 +46,9 @@ export function SiteHeader() {
               key={c}
               href={`/category/${slugifyCategory(c)}`}
               className={cn(
-                "rounded-md px-3 py-2 text-sm",
-                "text-foreground hover:bg-muted"
+                "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200",
+                "text-foreground hover:bg-lime-50 hover:text-lime-600/85",
+                "dark:hover:bg-lime-950/50 dark:hover:text-lime-600/85"
               )}
             >
               {c}
@@ -44,16 +56,16 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Simple mobile overflow menu (horizontal scroll) */}
+        {/* Enhanced mobile overflow menu */}
         <nav
           className="md:hidden"
           role="navigation"
           aria-label="Mobile Categories"
         >
-          <div className="flex max-w-[70vw] items-center gap-2 overflow-x-auto">
+          <div className="flex max-w-[70vw] items-center gap-2 overflow-x-auto scrollbar-hide">
             <Link
               href="/"
-              className="shrink-0 rounded-md px-3 py-2 text-sm hover:bg-muted"
+              className="shrink-0 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 hover:bg-orange-50 hover:text-orange-400 dark:hover:bg-orange-950/50 dark:hover:text-orange-400"
             >
               Home
             </Link>
@@ -61,7 +73,7 @@ export function SiteHeader() {
               <Link
                 key={c}
                 href={`/category/${slugifyCategory(c)}`}
-                className="shrink-0 rounded-md px-3 py-2 text-sm hover:bg-muted"
+                className="shrink-0 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 hover:bg-lime-50 hover:text-lime-600/85 dark:hover:bg-lime-950/50 dark:hover:text-lime-600/85"
               >
                 {c}
               </Link>

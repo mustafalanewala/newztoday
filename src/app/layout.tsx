@@ -1,12 +1,17 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { TopTicker } from "@/components/top-ticker";
 import { SiteFooter } from "@/components/site-footer";
 import { Suspense } from "react";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: "newztoday",
@@ -19,14 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={poppins.variable}>
+      <body suppressHydrationWarning={true}>
         <Suspense fallback={<div>Loading...</div>}>
           <TopTicker />
           <SiteHeader />
-          <main className="min-h-dvh bg-background text-foreground">
-            {children}
-          </main>
+          <main className="min-h-dvh text-foreground">{children}</main>
           <SiteFooter />
         </Suspense>
       </body>
