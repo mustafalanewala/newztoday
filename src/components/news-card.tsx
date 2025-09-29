@@ -15,7 +15,7 @@ export function NewsCard({
   return (
     <Card
       className={cn(
-        "group h-full overflow-hidden border-border bg-white/80 backdrop-blur-sm shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-orange-400/10 hover:-translate-y-1 dark:bg-gray-800/80 dark:hover:shadow-orange-400/20",
+        "group h-full overflow-hidden border-border bg-white/80 backdrop-blur-sm shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-theme/10 hover:-translate-y-1 dark:bg-gray-800/80 dark:hover:shadow-theme/20",
         className
       )}
     >
@@ -30,7 +30,7 @@ export function NewsCard({
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-        <div className="absolute top-3 left-3 rounded-full bg-orange-400 px-3 py-1 text-xs font-medium text-white shadow-lg border-2 border-white/20">
+        <div className="absolute top-3 left-3 rounded-full bg-theme px-3 py-1 text-xs font-medium text-white shadow-lg border-2 border-white/20">
           {item.Categrory_Name}
         </div>
       </div>
@@ -38,13 +38,13 @@ export function NewsCard({
         <CardTitle className="text-pretty text-base leading-tight">
           <Link
             href={`/news/${item.Slug}`}
-            className="hover:text-primary transition-colors duration-200 group-hover:text-orange-400 dark:group-hover:text-orange-400"
+            className="hover:text-primary transition-colors duration-200 group-hover:text-theme dark:group-hover:text-theme"
           >
             {item.News_Title}
           </Link>
         </CardTitle>
         <div className="flex items-center text-xs text-muted-foreground">
-          <span className="font-medium text-orange-400 dark:text-orange-400">
+          <span className="font-medium text-theme dark:text-theme">
             {item.News_Source}
           </span>
           <span className="mx-2 text-gray-400">•</span>

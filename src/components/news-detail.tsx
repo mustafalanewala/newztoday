@@ -23,7 +23,7 @@ export function NewsDetail({ slug }: { slug: string }) {
           variant="outline"
           size="sm"
           onClick={() => router.back()}
-          className="flex items-center gap-2 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 dark:hover:bg-orange-950/50 dark:hover:text-orange-400"
+          className="flex items-center gap-2 hover:bg-theme-muted hover:text-theme hover:border-theme"
         >
           <ArrowLeft className="h-4 w-4" />
           Back
