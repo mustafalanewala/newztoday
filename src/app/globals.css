@@ -35,6 +35,9 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-theme: #cf232f;
+  --color-theme-foreground: oklch(0.985 0 0);
+  --color-theme-muted: oklch(0.97 0 0 / 0.5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

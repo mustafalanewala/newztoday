@@ -6,7 +6,7 @@ export function SiteFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-16 border-t border-orange-200/20 bg-gradient-to-r from-orange-50/50 via-white to-lime-50/50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <footer className="mt-16 border-t border-theme/20 bg-gradient-to-r from-theme-muted via-white to-theme-muted dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -39,7 +39,7 @@ export function SiteFooter() {
                   <Link
                     key={category}
                     href={`/category/${category.toLowerCase()}`}
-                    className="text-sm text-muted-foreground hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-200"
+                    className="text-sm text-muted-foreground hover:text-theme transition-colors duration-200"
                   >
                     {category}
                   </Link>
@@ -78,7 +78,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 pt-8 border-t border-orange-200/20">
+        <div className="mt-8 pt-8 border-t border-theme/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
               © {currentYear} NewzToday — All rights reserved.

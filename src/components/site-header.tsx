@@ -39,8 +39,7 @@ export function SiteHeader() {
             href="/"
             className={cn(
               "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200",
-              "text-foreground hover:bg-orange-50 hover:text-orange-400",
-              "dark:hover:bg-orange-950/50 dark:hover:text-orange-400"
+              "text-foreground hover:bg-theme-muted hover:text-theme"
             )}
           >
             Home
@@ -51,8 +50,7 @@ export function SiteHeader() {
               href={`/category/${slugifyCategory(c)}`}
               className={cn(
                 "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200",
-                "text-foreground hover:bg-lime-50 hover:text-lime-600/85",
-                "dark:hover:bg-lime-950/50 dark:hover:text-lime-600/85"
+                "text-foreground hover:bg-theme-muted hover:text-theme"
               )}
             >
               {c}
@@ -77,7 +75,7 @@ export function SiteHeader() {
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-orange-50 hover:text-orange-400 dark:hover:bg-orange-950/50 dark:hover:text-orange-400"
+              className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-theme-muted hover:text-theme"
             >
               Home
             </Link>
@@ -86,7 +84,7 @@ export function SiteHeader() {
                 key={c}
                 href={`/category/${slugifyCategory(c)}`}
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-lime-50 hover:text-lime-600/85 dark:hover:bg-lime-950/50 dark:hover:text-lime-600/85"
+                className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-theme-muted hover:text-theme"
               >
                 {c}
               </Link>

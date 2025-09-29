@@ -7,10 +7,9 @@ export default function HomePage() {
         <section className="mb-12 text-center">
           <div className="mb-6">
             <h1 className="text-5xl font-bold tracking-tight">
-              <span className="text-orange-400">Newz</span>
-              <span className="text-lime-600/85">Today</span>
+              <span className="text-theme">NewzToday</span>
             </h1>
-            <div className="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-orange-400 to-lime-600/85 rounded-full"></div>
+            <div className="mx-auto mt-4 h-1 w-24 bg-theme rounded-full"></div>
           </div>
         </section>
         <NewsList />
