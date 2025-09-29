@@ -1,28 +1,27 @@
 "use client";
 
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
 import type { NewsItem } from "@/lib/types";
 import { filterByCategory, getCategoryFromSlug } from "@/lib/news-utils";
 import { NewsCard } from "./news-card";
-import { LoadingSpinner } from "./ui/loading-spinner";
 
-export function CategoryNews({ categorySlug }: { categorySlug: string }) {
-  const { data, error, isLoading } = useSWR<NewsItem[]>(
-    "/data/news.json",
-    fetcher
-  );
+export function CategoryNews({
+  categorySlug,
+  newsData,
+}: {
+  categorySlug: string;
+  newsData?: NewsItem[];
+}) {
+  if (!newsData) {
+    return <p className="text-muted-foreground">Loading category...</p>;
+  }
 
-  if (isLoading) return <LoadingSpinner />;
-  if (error) return <p className="text-destructive">Failed to load.</p>;
-
-  const items = filterByCategory(data || [], categorySlug);
+  const items = filterByCategory(newsData, categorySlug);
 
   return (
     <section className="space-y-6">
       <header>
         <h2 className="text-pretty text-2xl font-semibold">
-          {getCategoryFromSlug(data || [], categorySlug)}
+          {getCategoryFromSlug(newsData, categorySlug)}
         </h2>
       </header>
 

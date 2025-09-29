@@ -1,19 +1,26 @@
 "use client";
 
-import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { fetcher } from "@/lib/fetcher";
 import type { NewsItem } from "@/lib/types";
 import { formatDate, getBySlug } from "@/lib/news-utils";
 
-export function NewsDetail({ slug }: { slug: string }) {
+export function NewsDetail({
+  slug,
+  newsData,
+}: {
+  slug: string;
+  newsData?: NewsItem[];
+}) {
   const router = useRouter();
-  const { data } = useSWR<NewsItem[]>("/data/news.json", fetcher);
 
-  const item = getBySlug(data || [], slug);
+  if (!newsData) {
+    return <p className="text-muted-foreground">Loading article...</p>;
+  }
+
+  const item = getBySlug(newsData, slug);
   if (!item) return <p className="text-muted-foreground">Article not found.</p>;
 
   return (

@@ -1,13 +1,52 @@
+"use client";
+
+import useSWR from "swr";
 import { NewsList } from "@/components/news-list";
 import { VideoList } from "@/components/video-list";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { fetcher } from "@/lib/fetcher";
+import type { NewsItem, VideoItem } from "@/lib/types";
 
 export default function HomePage() {
+  const {
+    data: newsData,
+    error: newsError,
+    isLoading: newsLoading,
+  } = useSWR<NewsItem[]>("/data/news.json", fetcher);
+
+  const {
+    data: videoData,
+    error: videoError,
+    isLoading: videoLoading,
+  } = useSWR<VideoItem[]>("/data/videos.json", fetcher);
+
+  const isLoading = newsLoading || videoLoading;
+  const hasError = newsError || videoError;
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
+        <LoadingSpinner className="h-12 w-12" />
+      </div>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <div className="min-h-screen bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
+        <p className="text-destructive text-lg">
+          Failed to load content. Please try again later.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="mx-auto max-w-6xl px-4 py-8">
         {/* Breaking News Section */}
         <section className="mb-12">
-          <NewsList limit={6} random={true} />
+          <NewsList limit={6} random={true} newsData={newsData} />
         </section>
 
         {/* Video Stories Section */}
@@ -20,7 +59,7 @@ export default function HomePage() {
               View More Videos
             </button>
           </div>
-          <VideoList limit={3} />
+          <VideoList limit={3} videoData={videoData} />
         </section>
 
         {/* Latest News Section */}
@@ -31,7 +70,7 @@ export default function HomePage() {
               View More News
             </button>
           </div>
-          <NewsList limit={3} simpleLayout={true} />
+          <NewsList limit={3} simpleLayout={true} newsData={newsData} />
         </section>
       </div>
     </div>

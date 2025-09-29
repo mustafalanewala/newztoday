@@ -1,32 +1,24 @@
 "use client";
 
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
 import type { NewsItem } from "@/lib/types";
 import { NewsCard } from "./news-card";
-import { LoadingSpinner } from "./ui/loading-spinner";
 
 export function NewsList({
   limit,
   random = false,
   simpleLayout = false,
+  newsData,
 }: {
   limit?: number;
   random?: boolean;
   simpleLayout?: boolean;
+  newsData?: NewsItem[];
 }) {
-  const { data, error, isLoading } = useSWR<NewsItem[]>(
-    "/data/news.json",
-    fetcher
-  );
+  if (!newsData) {
+    return <p className="text-muted-foreground">Loading news...</p>;
+  }
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-  if (error) {
-    return <p className="text-destructive">Failed to load news.</p>;
-  }
-  const items = (data || []).filter((n) => n.Active_Flag !== false);
+  const items = newsData.filter((n) => n.Active_Flag !== false);
 
   // Shuffle array if random is true
   const shuffledItems = random

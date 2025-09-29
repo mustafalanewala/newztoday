@@ -1,25 +1,20 @@
 "use client";
 
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
 import type { VideoItem } from "@/lib/types";
 import { VideoCard } from "./video-card";
-import { LoadingSpinner } from "./ui/loading-spinner";
 
-export function VideoList({ limit = 3 }: { limit?: number }) {
-  const { data, error, isLoading } = useSWR<VideoItem[]>(
-    "/data/videos.json",
-    fetcher
-  );
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-  if (error) {
-    return <p className="text-destructive">Failed to load video stories.</p>;
+export function VideoList({
+  limit = 3,
+  videoData,
+}: {
+  limit?: number;
+  videoData?: VideoItem[];
+}) {
+  if (!videoData) {
+    return <p className="text-muted-foreground">Loading video stories...</p>;
   }
 
-  const videos = data || [];
+  const videos = videoData;
   const displayVideos = limit ? videos.slice(0, limit) : videos;
 
   if (!displayVideos.length) {
