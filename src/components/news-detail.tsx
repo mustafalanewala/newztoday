@@ -50,7 +50,7 @@ export function NewsDetail({ slug }: { slug: string }) {
             alt={item.News_Title}
             fill
             className="object-cover"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           />
         </div>
       )}

@@ -26,7 +26,7 @@ export function NewsCard({
             alt={item.News_Title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
@@ -35,7 +35,7 @@ export function NewsCard({
         </div>
       </div>
       <CardHeader className="space-y-2">
-        <CardTitle className="text-pretty text-base leading-tight">
+        <CardTitle className="text-pretty text-xl leading-tight">
           <Link
             href={`/news/${item.Slug}`}
             className="hover:text-primary transition-colors duration-200 group-hover:text-theme dark:group-hover:text-theme"
@@ -43,7 +43,7 @@ export function NewsCard({
             {item.News_Title}
           </Link>
         </CardTitle>
-        <div className="flex items-center text-xs text-muted-foreground">
+        <div className="flex items-center text-sm text-muted-foreground">
           <span className="font-medium text-theme dark:text-theme">
             {item.News_Source}
           </span>
@@ -54,7 +54,7 @@ export function NewsCard({
         </div>
       </CardHeader>
       <CardContent>
-        <p className="line-clamp-3 text-sm text-muted-foreground leading-relaxed">
+        <p className="line-clamp-3 text-base text-muted-foreground leading-relaxed">
           {item.News_Content}
         </p>
       </CardContent>

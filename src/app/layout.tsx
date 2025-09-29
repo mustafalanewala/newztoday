@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Merriweather, Lato } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { TopTicker } from "@/components/top-ticker";
@@ -8,14 +8,20 @@ import { SiteFooter } from "@/components/site-footer";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 
-const poppins = Poppins({
+const merri = Merriweather({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["400", "700"],
+  variable: "--font-georgia",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
-  title: "newztoday",
+  title: "NewzToday",
   description: "Modern, responsive news powered by JSON",
 };
 
@@ -25,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={`${merri.variable} ${lato.variable}`}>
       <body suppressHydrationWarning={true}>
         <Suspense fallback={<LoadingSpinner />}>
           <TopTicker />

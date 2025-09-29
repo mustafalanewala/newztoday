@@ -5,15 +5,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="mx-auto max-w-6xl px-4 py-8">
-        <section className="mb-12 text-center">
-          <div className="mb-6">
-            <h1 className="text-5xl font-bold tracking-tight">
-              <span className="text-theme">NewzToday</span>
-            </h1>
-            <div className="mx-auto mt-4 h-1 w-24 bg-theme rounded-full"></div>
-          </div>
-        </section>
-
         {/* Breaking News Section */}
         <section className="mb-12">
           <NewsList limit={6} random={true} />
@@ -22,7 +13,7 @@ export default function HomePage() {
         {/* Video Stories Section */}
         <section className="mb-12">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-foreground">
+            <h2 className="text-4xl font-bold text-foreground">
               Video Stories
             </h2>
             <button className="inline-flex items-center px-6 py-3 bg-theme text-white font-medium rounded-lg hover:bg-theme/90 transition-colors duration-200 shadow-lg">
@@ -35,7 +26,7 @@ export default function HomePage() {
         {/* Latest News Section */}
         <section className="mb-12">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-foreground">Latest News</h2>
+            <h2 className="text-4xl font-bold text-foreground">Latest News</h2>
             <button className="inline-flex items-center px-6 py-3 bg-theme text-white font-medium rounded-lg hover:bg-theme/90 transition-colors duration-200 shadow-lg">
               View More News
             </button>

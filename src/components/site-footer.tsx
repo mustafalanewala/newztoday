@@ -14,10 +14,10 @@ export function SiteFooter() {
             <div className="flex items-center space-x-4">
               <Image
                 src="/logo.png"
-                alt="newztoday"
-                width={120}
-                height={40}
-                className="h-8 w-auto"
+                alt="NewzToday"
+                width={150}
+                height={45}
+                className="h-8 w-auto md:h-10"
               />
             </div>
             <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
