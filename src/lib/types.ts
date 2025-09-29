@@ -9,3 +9,11 @@ export type NewsItem = {
   News_Id: string | number
   Slug: string
 }
+
+export type VideoItem = {
+  VideoDetail_id: number
+  VideoTitle: string
+  Image: string
+  FileName: string // YouTube embed URL
+  Insert_Date: string // ISO date string
+}

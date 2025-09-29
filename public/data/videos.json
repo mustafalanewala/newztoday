@@ -1,0 +1,23 @@
+[
+  {
+    "VideoDetail_id": 1,
+    "VideoTitle": "Cyclone Fengal Flood Like Situation At Bus Station",
+    "Image": "/data/video-thumbnail-1.svg",
+    "FileName": "https://www.youtube.com/embed/hUMZUilkUNQ?si=g-vU0-ggKgkzPjHU",
+    "Insert_Date": "2024-12-03"
+  },
+  {
+    "VideoDetail_id": 2,
+    "VideoTitle": "PM Assures Help To Cyclone Hit Tamil Nadu",
+    "Image": "/data/video-thumbnail-2.svg",
+    "FileName": "https://www.youtube.com/embed/nxkZ5ZTLXZw?si=dbV-rqXI6JDxNYaM",
+    "Insert_Date": "2024-12-04"
+  },
+  {
+    "VideoDetail_id": 3,
+    "VideoTitle": "Another Landslide Hits Tamil Nadu Temple Near Spot Where 7 Of Family Trapped",
+    "Image": "/data/video-thumbnail-3.svg",
+    "FileName": "https://www.youtube.com/embed/wGer-YpeB9w?si=Uf-BC7hKh49Gg_wH",
+    "Insert_Date": "2024-12-04"
+  }
+]

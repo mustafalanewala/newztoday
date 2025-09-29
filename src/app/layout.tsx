@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import { TopTicker } from "@/components/top-ticker";
 import { SiteFooter } from "@/components/site-footer";
 import { Suspense } from "react";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <body suppressHydrationWarning={true}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingSpinner />}>
           <TopTicker />
           <SiteHeader />
           <main className="min-h-dvh text-foreground">{children}</main>

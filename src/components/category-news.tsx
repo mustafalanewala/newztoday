@@ -5,6 +5,7 @@ import { fetcher } from "@/lib/fetcher";
 import type { NewsItem } from "@/lib/types";
 import { filterByCategory, getCategoryFromSlug } from "@/lib/news-utils";
 import { NewsCard } from "./news-card";
+import { LoadingSpinner } from "./ui/loading-spinner";
 
 export function CategoryNews({ categorySlug }: { categorySlug: string }) {
   const { data, error, isLoading } = useSWR<NewsItem[]>(
@@ -12,7 +13,7 @@ export function CategoryNews({ categorySlug }: { categorySlug: string }) {
     fetcher
   );
 
-  if (isLoading) return <p className="text-muted-foreground">Loading…</p>;
+  if (isLoading) return <LoadingSpinner />;
   if (error) return <p className="text-destructive">Failed to load.</p>;
 
   const items = filterByCategory(data || [], categorySlug);
