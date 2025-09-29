@@ -23,6 +23,9 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: "NewzToday",
   description: "Modern, responsive news powered by JSON",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,17 +1,18 @@
 "use client";
 
+import { use } from "react";
 import useSWR from "swr";
 import { CategoryNews } from "@/components/category-news";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { fetcher } from "@/lib/fetcher";
 import type { NewsItem } from "@/lib/types";
 
-export default async function CategoryPage({
+export default function CategoryPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug } = use(params);
 
   const { data, error, isLoading } = useSWR<NewsItem[]>(
     "/data/news.json",

@@ -30,9 +30,6 @@ export function NewsCard({
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-        <div className="absolute top-3 left-3 rounded-full bg-theme px-3 py-1 text-xs font-medium text-white shadow-lg border-2 border-white/20">
-          {item.Categrory_Name}
-        </div>
       </div>
       <CardHeader className="space-y-2">
         <CardTitle className="text-pretty text-xl leading-tight">
@@ -51,6 +48,10 @@ export function NewsCard({
           <time dateTime={item.Insert_Date} className="text-gray-500">
             {formatDate(item.Insert_Date)}
           </time>
+          <span className="mx-2 text-gray-400">|</span>
+          <span className="rounded-full bg-theme px-2 py-0.5 text-xs font-medium text-white">
+            {item.Categrory_Name}
+          </span>
         </div>
       </CardHeader>
       <CardContent>
