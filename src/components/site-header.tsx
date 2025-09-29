@@ -19,57 +19,41 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-white/80 backdrop-blur-md shadow-sm dark:bg-gray-900/80 dark:border-border/20">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
-        {/* Hamburger Menu - Always visible */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Left side: Hamburger + Logo */}
+        <div className="flex items-center">
+          {/* Hamburger Menu - Always visible */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 mr-4"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
-        {/* Logo - Centered */}
-        <Link
-          href="/"
-          className="flex items-center space-x-2 transition-transform hover:scale-105 mx-auto"
-        >
-          <Image
-            src="/logo.png"
-            alt="NewzToday"
-            width={200}
-            height={50}
-            className="h-8 w-auto md:h-10 lg:h-12"
-          />
-          <span className="sr-only">Go to homepage</span>
-        </Link>
-
-        {/* Advertisement Space */}
-        <div className="hidden md:block w-32 h-12 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-xs text-muted-foreground">
-          Ad Space
-        </div>
-      </div>
-
-      {/* Desktop Nav */}
-      <div className="hidden md:block mx-auto max-w-6xl px-4 pb-4">
-        <nav
-          className="flex items-center justify-center gap-2"
-          aria-label="Primary"
-        >
+          {/* Logo */}
           <Link
             href="/"
-            className={cn(
-              "rounded-lg px-6 py-3 text-lg font-semibold transition-all duration-200",
-              "text-foreground hover:bg-theme-muted hover:text-theme"
-            )}
+            className="flex items-center space-x-2 transition-transform hover:scale-105"
           >
-            Home
+            <Image
+              src="/logo.png"
+              alt="NewzToday"
+              width={200}
+              height={50}
+              className="h-8 w-auto md:h-10 lg:h-12"
+            />
+            <span className="sr-only">Go to homepage</span>
           </Link>
+        </div>
+
+        {/* Right side: Desktop Categories */}
+        <nav className="hidden md:flex items-center gap-2">
           {categories.map((c) => (
             <Link
               key={c}
               href={`/category/${slugifyCategory(c)}`}
               className={cn(
-                "rounded-lg px-6 py-3 text-lg font-semibold transition-all duration-200",
+                "rounded-lg px-4 py-2 text-base font-medium transition-all duration-200",
                 "text-foreground hover:bg-theme-muted hover:text-theme"
               )}
             >
@@ -113,11 +97,11 @@ export function SiteHeader() {
               About Us
             </Link>
             <Link
-              href="/privacy"
+              href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
               className="rounded-lg px-3 py-3 text-base font-medium hover:bg-theme-muted hover:text-theme"
             >
-              Privacy Policy
+              Contact Us
             </Link>
             <Link
               href="/advertise"
@@ -127,11 +111,11 @@ export function SiteHeader() {
               Advertise with Us
             </Link>
             <Link
-              href="/contact"
+              href="/privacy"
               onClick={() => setIsMobileMenuOpen(false)}
               className="rounded-lg px-3 py-3 text-base font-medium hover:bg-theme-muted hover:text-theme"
             >
-              Contact Us
+              Privacy Policy
             </Link>
           </nav>
         </div>
