@@ -14,10 +14,7 @@ export default function CategoryPage({
 }) {
   const { slug } = use(params);
 
-  const { data, error, isLoading } = useSWR<NewsItem[]>(
-    "/data/news.json",
-    fetcher
-  );
+  const { data, error, isLoading } = useSWR<NewsItem[]>("/api/news", fetcher);
 
   if (isLoading) {
     return (

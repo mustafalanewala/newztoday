@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 export function SiteHeader() {
-  const { data } = useSWR<NewsItem[]>("/data/news.json", fetcher);
+  const { data } = useSWR<NewsItem[]>("/api/news", fetcher);
   const categories = getCategories(data || []);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

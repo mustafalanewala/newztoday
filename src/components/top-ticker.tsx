@@ -6,7 +6,7 @@ import type { NewsItem } from "@/lib/types";
 import Link from "next/link";
 
 export function TopTicker() {
-  const { data } = useSWR<NewsItem[]>("/data/news.json", fetcher);
+  const { data } = useSWR<NewsItem[]>("/api/news", fetcher);
   const items = (data || []).slice(0, 10);
 
   return (

@@ -12,7 +12,7 @@ export default function HomePage() {
     data: newsData,
     error: newsError,
     isLoading: newsLoading,
-  } = useSWR<NewsItem[]>("/data/news.json", fetcher);
+  } = useSWR<NewsItem[]>("/api/news", fetcher);
 
   const {
     data: videoData,
