@@ -2,10 +2,9 @@
 
 import useSWR from "swr";
 import { NewsList } from "@/components/news-list";
-import { VideoList } from "@/components/video-list";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { fetcher } from "@/lib/fetcher";
-import type { NewsItem, VideoItem } from "@/lib/types";
+import type { NewsItem } from "@/lib/types";
 
 export default function HomePage() {
   const {
@@ -14,16 +13,7 @@ export default function HomePage() {
     isLoading: newsLoading,
   } = useSWR<NewsItem[]>("/api/news", fetcher);
 
-  const {
-    data: videoData,
-    error: videoError,
-    isLoading: videoLoading,
-  } = useSWR<VideoItem[]>("/data/videos.json", fetcher);
-
-  const isLoading = newsLoading || videoLoading;
-  const hasError = newsError || videoError;
-
-  if (isLoading) {
+  if (newsLoading) {
     return (
       <div className="min-h-screen bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
         <LoadingSpinner className="h-12 w-12" />
@@ -31,7 +21,7 @@ export default function HomePage() {
     );
   }
 
-  if (hasError) {
+  if (newsError) {
     return (
       <div className="min-h-screen bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
         <p className="text-destructive text-lg">
@@ -47,19 +37,6 @@ export default function HomePage() {
         {/* Breaking News Section */}
         <section className="mb-12">
           <NewsList limit={6} random={true} newsData={newsData} />
-        </section>
-
-        {/* Video Stories Section */}
-        <section className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-4xl font-bold text-foreground">
-              Video Stories
-            </h2>
-            <button className="inline-flex items-center px-6 py-3 bg-theme text-white font-medium rounded-lg hover:bg-theme/90 transition-colors duration-200 shadow-lg">
-              View More Videos
-            </button>
-          </div>
-          <VideoList limit={3} videoData={videoData} />
         </section>
 
         {/* Latest News Section */}

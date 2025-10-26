@@ -46,8 +46,36 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        {/* Right side: Desktop Categories */}
+        {/* Right side: Desktop Categories and Sections */}
         <nav className="hidden md:flex items-center gap-2">
+          <Link
+            href="/gallery"
+            className={cn(
+              "rounded-lg px-4 py-2 text-base font-medium transition-all duration-200",
+              "text-foreground hover:bg-theme-muted hover:text-theme"
+            )}
+          >
+            Gallery
+          </Link>
+          <Link
+            href="/videos"
+            className={cn(
+              "rounded-lg px-4 py-2 text-base font-medium transition-all duration-200",
+              "text-foreground hover:bg-theme-muted hover:text-theme"
+            )}
+          >
+            Videos
+          </Link>
+          <Link
+            href="/blog"
+            className={cn(
+              "rounded-lg px-4 py-2 text-base font-medium transition-all duration-200",
+              "text-foreground hover:bg-theme-muted hover:text-theme"
+            )}
+          >
+            Blog
+          </Link>
+
           {categories.map((c) => (
             <Link
               key={c}
@@ -89,6 +117,28 @@ export function SiteHeader() {
               <div className="border-t border-border/30 my-2"></div>
             </div>
             {/* Always show these menu items */}
+            {/* Section pages */}
+            <Link
+              href="/gallery"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="rounded-lg px-3 py-3 text-base font-medium hover:bg-theme-muted hover:text-theme"
+            >
+              Gallery
+            </Link>
+            <Link
+              href="/videos"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="rounded-lg px-3 py-3 text-base font-medium hover:bg-theme-muted hover:text-theme"
+            >
+              Videos
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="rounded-lg px-3 py-3 text-base font-medium hover:bg-theme-muted hover:text-theme"
+            >
+              Blog
+            </Link>
             <Link
               href="/about"
               onClick={() => setIsMobileMenuOpen(false)}
