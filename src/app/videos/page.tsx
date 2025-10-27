@@ -8,7 +8,7 @@ const API_URL =
 export default async function VideosPage({
   searchParams,
 }: {
-  searchParams?: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
   try {
     const res = await fetch(API_URL, { cache: "no-store" });
@@ -16,7 +16,8 @@ export default async function VideosPage({
     const json = await res.json();
     const videos = json?.data?.videos || [];
 
-    const page = Math.max(1, Number(searchParams?.page || 1));
+    const resolvedSearchParams = await searchParams;
+    const page = Math.max(1, Number(resolvedSearchParams?.page || 1));
     const pageSize = 9;
     const total = videos.length;
     const totalPages = Math.max(1, Math.ceil(total / pageSize));
