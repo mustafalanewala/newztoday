@@ -25,7 +25,7 @@ export async function GET() {
       News_Title: item.news_Title,
       News_Content: item.news_Content || '',
       News_Source: item.news_Source || '',
-      Categrory_Name: item.category_Name || 'General',
+      categrory_Name: item.categrory_Name || 'General',
       Image: item.image || '',
       Insert_Date: item.insert_Date || new Date().toISOString(),
       Slug: item.slug || item.news_Title?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') || '',

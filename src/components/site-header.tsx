@@ -7,14 +7,31 @@ import { cn } from "@/lib/utils";
 import { fetcher } from "@/lib/fetcher";
 import { getCategories, slugifyCategory } from "@/lib/news-utils";
 import type { NewsItem } from "@/lib/types";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export function SiteHeader() {
   const { data } = useSWR<NewsItem[]>("/api/news", fetcher);
   const categories = getCategories(data || []);
+  const mainCategories = categories.slice(0, 3);
+  const moreCategories = categories.slice(3);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-white/80 backdrop-blur-md shadow-sm dark:bg-gray-900/80 dark:border-border/20">
@@ -76,7 +93,7 @@ export function SiteHeader() {
             Blog
           </Link>
 
-          {categories.map((c) => (
+          {mainCategories.map((c) => (
             <Link
               key={c}
               href={`/category/${slugifyCategory(c)}`}
@@ -88,6 +105,36 @@ export function SiteHeader() {
               {c}
             </Link>
           ))}
+
+          {moreCategories.length > 0 && (
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={cn(
+                  "rounded-lg px-4 py-2 text-base font-medium transition-all duration-200 flex items-center gap-1",
+                  "text-foreground hover:bg-theme-muted hover:text-theme"
+                )}
+              >
+                More <ChevronDown size={16} />
+              </button>
+              {isOpen && (
+                <div className="absolute top-full mt-1 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg z-50 min-w-[300px] p-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    {moreCategories.map((c) => (
+                      <Link
+                        key={c}
+                        href={`/category/${slugifyCategory(c)}`}
+                        onClick={() => setIsOpen(false)}
+                        className="block px-3 py-2 text-sm font-medium hover:bg-theme-muted hover:text-theme rounded"
+                      >
+                        {c}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </nav>
       </div>
 

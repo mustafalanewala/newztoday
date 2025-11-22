@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { PaginationClient } from "@/components/ui/pagination-client";
@@ -88,18 +89,14 @@ export default async function BlogPage({
                         dangerouslySetInnerHTML={{ __html: b.blog_Summary }}
                       />
                     )}
-                    {b.tags && (
-                      <div className="mt-4 flex flex-wrap gap-1">
-                        {b.tags.split(",").map((tag: string, index: number) => (
-                          <span
-                            key={index}
-                            className="inline-block bg-muted px-2 py-1 text-xs rounded-full text-muted-foreground"
-                          >
-                            {tag.trim()}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    <div className="mt-4">
+                      <Link
+                        href={`/blog/${b.blog_id}`}
+                        className="text-theme hover:text-theme/80 font-medium text-sm"
+                      >
+                        Read more →
+                      </Link>
+                    </div>
                   </CardContent>
                 </Card>
               ))}

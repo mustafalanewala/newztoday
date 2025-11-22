@@ -50,7 +50,7 @@ export function NewsCard({
           </time>
           <span className="mx-2 text-gray-400">|</span>
           <span className="rounded-full bg-theme px-2 py-0.5 text-xs font-medium text-white">
-            {item.Categrory_Name}
+            {item.categrory_Name}
           </span>
         </div>
       </CardHeader>
